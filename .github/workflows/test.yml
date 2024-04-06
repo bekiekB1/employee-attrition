@@ -31,7 +31,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Build Docker image
-        run: docker build -t $DOCKER_USERNAME/emply_attr:latest .
+        run: docker build -t $DOCKER_USERNAME/test_ml:latest .
 
       - name: Push Docker image to Docker Hub
         env:
@@ -39,4 +39,4 @@ jobs:
           DOCKER_PASSWORD: ${{ secrets.DOCKERHUB_TOKEN }}
         run: |
           docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
-          docker push $DOCKER_USERNAME/emply_attr:latest
+          docker push $DOCKER_USERNAME/test_ml:latest
