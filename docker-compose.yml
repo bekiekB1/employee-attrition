@@ -1,0 +1,8 @@
+services:
+  emply-attr:
+    build: .
+    container_name: ml-dev
+    volumes:
+      - .:/opt
+    tty: true
+    command: bash
