@@ -1,0 +1,25 @@
+name: Test CI/CD Pipeline
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+
+jobs:
+  run-tests:
+    name: Run tests with Docker Compose
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Install Docker Compose
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y docker-compose
+
+      - name: Run make test with Docker Compose
+        run: docker-compose run --rm emply-attr make test
+        
