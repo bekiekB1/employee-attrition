@@ -26,7 +26,6 @@ jobs:
   build-and-push-image:
     name: Build and push Docker image
     runs-on: ubuntu-latest
-    needs: ["run-tests"]
     steps:
       - name: actions/checkout@v3
       - name: Build Docker image
