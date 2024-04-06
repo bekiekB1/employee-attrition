@@ -16,8 +16,6 @@ Note: This is a fictional data set created by IBM data scientists.
 ### Setup Dev Environment with Docker
 
 ```bash
-export PYTHONPATH=$PYTHONPATH:$PWD
-
 # Command to compose
 docker-compose run --rm emply-attr
 #Or, explicitly make it build docker image
