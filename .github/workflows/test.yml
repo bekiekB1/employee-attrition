@@ -23,6 +23,7 @@ jobs:
 #       - name: Run make test with Docker Compose
 #         run: docker-compose run --rm emply-attr make test
 
+          
   build-and-push-image:
     name: Build and push Docker image
     runs-on: ubuntu-latest
@@ -30,13 +31,11 @@ jobs:
     
     steps:
       - uses: actions/checkout@v3
-      - name: Build Docker image
-        run: docker build -t $DOCKER_USERNAME/test_ml:latest .
-
       - name: Push Docker image to Docker Hub
         env:
           DOCKER_USERNAME: ${{ secrets.DOCKER_USER }}
           DOCKER_PASSWORD: ${{ secrets.DOCKERHUB_TOKEN }}
         run: |
           docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+          docker build -t $DOCKER_USERNAME/test_ml:latest .
           docker push $DOCKER_USERNAME/test_ml:latest
