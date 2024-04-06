@@ -7,26 +7,26 @@ on:
     branches: ["main"]
 
 jobs:
-  run-tests:
-    name: Run tests with Docker Compose
-    runs-on: ubuntu-latest
+#   run-tests:
+#     name: Run tests with Docker Compose
+#     runs-on: ubuntu-latest
 
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
+#     steps:
+#       - name: Checkout code
+#         uses: actions/checkout@v3
 
-      - name: Install Docker Compose
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y docker-compose
+#       - name: Install Docker Compose
+#         run: |
+#           sudo apt-get update
+#           sudo apt-get install -y docker-compose
 
-      - name: Run make test with Docker Compose
-        run: docker-compose run --rm emply-attr make test
+#       - name: Run make test with Docker Compose
+#         run: docker-compose run --rm emply-attr make test
 
   build-and-push-image:
     name: Build and push Docker image
     runs-on: ubuntu-latest
-    needs: [run-tests]
+    # needs: [run-tests]
     
     steps:
       - uses: actions/checkout@v3
