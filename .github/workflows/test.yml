@@ -24,14 +24,28 @@ jobs:
 #         run: docker-compose run --rm emply-attr make test
 
           
-  build-and-push-image:
-    name: Build and push Docker image
-    runs-on: ubuntu-latest
-    # needs: [run-tests]
+  # build-and-push-image:
+  #   name: Build and push Docker image
+  #   runs-on: ubuntu-latest
+  #   # needs: [run-tests]
     
+  #   steps:
+  #     - uses: actions/checkout@v3
+  #     - name: Push Docker image to Docker Hub
+  #       env:
+  #         DOCKER_USERNAME: ${{ secrets.DOCKER_USER }}
+  #         DOCKER_PASSWORD: ${{ secrets.DOCKERHUB_TOKEN }}
+  #       run: |
+  #         docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+  #         docker build -t $DOCKER_USERNAME/test_ml:latest .
+  #         docker push $DOCKER_USERNAME/test_ml:latest
+
+  cd_pipeline:
+    runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - name: Push Docker image to Docker Hub
+      - uses: actions/checkout@v2
+
+      - name: Docker Build and Push 
         env:
           DOCKER_USERNAME: ${{ secrets.DOCKER_USER }}
           DOCKER_PASSWORD: ${{ secrets.DOCKERHUB_TOKEN }}
